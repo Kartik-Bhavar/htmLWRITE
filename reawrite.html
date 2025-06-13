@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NFC Write Trigger</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        text-align: center;
+      }
+      input {
+        padding: 10px;
+        width: 60%;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Write to NFC Tag</h1>
+    <input type="text" id="nfcData" placeholder="Enter data to write" />
+    <br />
+    <button onclick="writeToNFC()">Write on NFC Tag</button>
+
+    <script>
+      function writeToNFC() {
+        const data = document.getElementById("nfcData").value.trim();
+        if (!data) {
+          alert("Please enter data to write.");
+          return;
+        }
+
+        // Open the app using deep link
+        const url = `nfcapp://write-tag?data=${encodeURIComponent(data)}`;
+        window.location.href = url;
+      }
+    </script>
+  </body>
+</html>
